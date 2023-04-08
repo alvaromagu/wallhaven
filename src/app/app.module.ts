@@ -8,13 +8,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import {NgOptimizedImage} from "@angular/common";
 import { DaumComponent } from './components/daum/daum.component';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SpinnerComponent,
-    DaumComponent
+    DaumComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

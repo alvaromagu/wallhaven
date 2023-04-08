@@ -1,3 +1,7 @@
-<div class="w-72 h-40 relative">
-  <img class="h-auto" [ngSrc]="daum.path" [alt]="daum.category" fill priority>
+<div class="flex flex-col gap-2">
+  <div class="w-72 h-40 relative">
+    <img [ngSrc]="daum.path" [alt]="daum.category" fill priority>
+  </div>
+  <app-category [category]="daum.category">
+  </app-category>
 </div>

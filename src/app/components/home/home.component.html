@@ -1,8 +1,8 @@
-<h2 class="text-xl">Thumbnails</h2>
-<ng-container *ngIf="!loading; else spinner">
+<h2 class="text-xl mb-5">Thumbnails</h2>
+<div class="flex flex-wrap gap-5 shadow-sm justify-center" *ngIf="!loading; else spinner">
   <app-daum *ngFor="let daum of daums" [daum]="daum">
   </app-daum>
-</ng-container>
+</div>
 
 <ng-template #spinner>
   <spinner class="flex justify-center"></spinner>
