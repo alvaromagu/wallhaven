@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BaseService} from "./base.service";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Daum, Wallhaven} from "../types/wallhaven";
+import {Wallhaven} from "../types/wallhaven";
 import {Wallpaper} from "../types/wallpaper";
 
 @Injectable({
@@ -16,9 +16,9 @@ export class WallhavenService extends BaseService {
   }
 
   search(
-    request: SearchParams = { page: 1 }
+    request: SearchParams = {page: 1}
   ): Observable<Wallhaven> {
-    const params = new HttpParams({ fromObject: { ...request, apiKey: this.apiKey, } });
+    const params = new HttpParams({fromObject: {...request, apiKey: this.apiKey,}});
     return this.client.get<Wallhaven>(`${this.baseUrl}/search`, {params});
   }
 
