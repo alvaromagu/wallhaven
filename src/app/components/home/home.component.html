@@ -9,7 +9,7 @@
       </app-daum>
     </li>
   </ul>
-  <button (click)="handleLoadMore()" [disabled]="loading" type="button" class="text-white outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-3 items-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+  <button *ngIf="hasMoreContent" (click)="handleLoadMore()" [disabled]="loading" type="button" class="text-white outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-3 items-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
     {{ loading ? 'Loading...' : 'Load more results' }}
     <spinner *ngIf="loading" class="w-4 h-4"></spinner>
   </button>

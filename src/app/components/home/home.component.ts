@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   });
   daums: Daum[] = [];
   loading = false;
+  hasMoreContent = true;
   private page = 1;
 
   constructor(
@@ -36,11 +37,11 @@ export class HomeComponent implements OnInit {
       finalize(() => this.loading = false)
     ).subscribe({
       next: value => {
+        this.hasMoreContent = value.data.length !== 0;
         if (reset) {
           this.daums = value.data;
           return;
         }
-
         this.daums = [...this.daums, ...value.data];
       },
       error: err => {
