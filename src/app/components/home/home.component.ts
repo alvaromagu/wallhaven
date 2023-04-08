@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
       finalize(() => this.loading = false)
     ).subscribe({
       next: value => {
-        this.hasMoreContent = value.data.length !== 0;
+        this.hasMoreContent = value.data.length === value.meta.per_page;
         if (reset) {
           this.daums = value.data;
           return;
