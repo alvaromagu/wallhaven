@@ -1,13 +1,29 @@
 <main *ngIf="!loading && wallpaper !== undefined; else loader">
-  <div class="flex mb-5 gap-5">
-    <p class="text-2xl">{{wallpaper.data.dimension_x}} x {{wallpaper.data.dimension_y}}</p>
-  </div>
+  <header class="flex justify-between items-center">
+    <div class="flex flex-col mb-5 gap-2">
+      <p class="text-2xl">{{wallpaper.data.dimension_x}} x {{wallpaper.data.dimension_y}}</p>
+      <div class="flex gap-5">
+      <span class="flex gap-2">
+        <app-heart></app-heart>
+        {{wallpaper.data.favorites}}
+      </span>
+        <span class="flex gap-2">
+        <app-eye></app-eye>
+          {{wallpaper.data.views}}
+      </span>
+      </div>
+    </div>
+    <div class="flex gap-3 items-center">
+      <img [ngSrc]="wallpaper.data.uploader.avatar['32px']" alt="{{wallpaper.data.uploader.username}}"
+           class="rounded-full" height="32" width="32">
+    </div>
+  </header>
   <img [height]="wallpaper.data.dimension_y" [ngSrc]="wallpaper.data.path" [width]="wallpaper.data.dimension_x"
        alt="{{wallpaper.data.category}}">
-  <div class="flex flex-wrap mt-2 gap-2">
+  <footer class="flex flex-wrap mt-2 gap-2">
     <app-category *ngFor="let tag of wallpaper.data.tags" [category]="tag.name"></app-category>
     <app-category [category]="wallpaper.data.category"></app-category>
-  </div>
+  </footer>
 </main>
 <ng-template #loader>
   <div class="grid place-content-center">

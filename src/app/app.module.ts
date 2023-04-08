@@ -12,6 +12,8 @@ import {CategoryComponent} from './components/category/category.component';
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {WallpaperComponent} from './components/wallpaper/wallpaper.component';
+import { HeartComponent } from './components/icons/heart/heart.component';
+import { EyeComponent } from './components/icons/eye/eye.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {WallpaperComponent} from './components/wallpaper/wallpaper.component';
     DaumComponent,
     CategoryComponent,
     SearchBarComponent,
-    WallpaperComponent
+    WallpaperComponent,
+    HeartComponent,
+    EyeComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,7 @@ export interface Data {
   id: string
   url: string
   short_url: string
-  uploader: Uploader
+  uploader: User
   views: number
   favorites: number
   source: string
@@ -25,7 +25,7 @@ export interface Data {
   tags: Tag[]
 }
 
-export interface Uploader {
+export interface User {
   username: string
   group: string
   avatar: Avatar
