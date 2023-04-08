@@ -5,10 +5,10 @@ import {WallhavenService} from "../../services/wallhaven.service";
 
 @Component({
   selector: 'app-thumbnail',
-  templateUrl: './thumbnail.component.html',
-  styleUrls: ['./thumbnail.component.css']
+  templateUrl: './wallpaper.component.html',
+  styleUrls: ['./wallpaper.component.css']
 })
-export class ThumbnailComponent implements OnDestroy {
+export class WallpaperComponent implements OnDestroy {
   private unSubscribe: Subject<void> = new Subject();
 
   constructor(

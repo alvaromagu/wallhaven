@@ -1,7 +1,7 @@
-<a [routerLink]="'thumbnail/' + daum.id">
+<a [routerLink]="'wallpaper/' + daum.id">
   <article class="flex flex-col gap-2">
     <picture class="w-72 h-40 relative">
-      <img [ngSrc]="daum.thumbs.large" [alt]="daum.category" fill priority>
+      <img [alt]="daum.category" [ngSrc]="daum.thumbs.large" fill priority>
     </picture>
     <app-category [category]="daum.category">
     </app-category>

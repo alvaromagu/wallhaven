@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./components/home/home.component";
-import {ThumbnailComponent} from "./components/thumbnail/thumbnail.component";
+import {WallpaperComponent} from "./components/thumbnail/wallpaper.component";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'thumbnail/:id', component: ThumbnailComponent }
+  {path: '', component: HomeComponent},
+  {path: 'wallpaper/:id', component: WallpaperComponent}
 
 ];
 
@@ -18,4 +18,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
