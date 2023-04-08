@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Daum} from "../../types/wallhaven-search";
+import {Daum} from "../../types/wallhaven";
 
 @Component({
   selector: 'app-daum',

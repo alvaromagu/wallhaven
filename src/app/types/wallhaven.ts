@@ -1,4 +1,4 @@
-export interface WallhavenSearch {
+export interface Wallhaven {
   data: Daum[]
   meta: Meta
 }

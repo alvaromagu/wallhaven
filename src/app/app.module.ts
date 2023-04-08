@@ -10,6 +10,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { DaumComponent } from './components/daum/daum.component';
 import { CategoryComponent } from './components/category/category.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    ReactiveFormsModule
   ],
   providers: [
   ],
