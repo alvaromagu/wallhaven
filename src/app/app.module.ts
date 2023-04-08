@@ -9,6 +9,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import {NgOptimizedImage} from "@angular/common";
 import { DaumComponent } from './components/daum/daum.component';
 import { CategoryComponent } from './components/category/category.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CategoryComponent } from './components/category/category.component';
     HomeComponent,
     SpinnerComponent,
     DaumComponent,
-    CategoryComponent
+    CategoryComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

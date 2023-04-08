@@ -1,4 +1,7 @@
 <h2 class="text-xl mb-5">Thumbnails</h2>
+
+<app-search-bar class="block mb-5"></app-search-bar>
+
 <div class="flex flex-wrap gap-5 shadow-sm justify-center" *ngIf="!loading; else spinner">
   <app-daum *ngFor="let daum of daums" [daum]="daum">
   </app-daum>
