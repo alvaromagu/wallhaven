@@ -1,12 +1,16 @@
-<h2 class="text-xl mb-5">Thumbnails</h2>
-
-<app-search-bar class="block mb-5"></app-search-bar>
-
-<div class="flex flex-wrap gap-5 shadow-sm justify-center" *ngIf="!loading; else spinner">
-  <app-daum *ngFor="let daum of daums" [daum]="daum">
-  </app-daum>
+<header>
+  <h2 class="text-xl mb-5">Thumbnails</h2>
+  <app-search-bar class="block mb-5"></app-search-bar>
+</header>
+<div class="flex flex-col gap-5 items-center">
+  <ul class="flex flex-wrap flex-shrink gap-5 justify-center">
+    <li *ngFor="let daum of daums">
+      <app-daum [daum]="daum">
+      </app-daum>
+    </li>
+  </ul>
+  <button (click)="handleLoadMore()" [disabled]="loading" type="button" class="text-white outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex gap-3 items-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+    {{ loading ? 'Loading...' : 'Load more results' }}
+    <spinner *ngIf="loading" class="w-4 h-4"></spinner>
+  </button>
 </div>
-
-<ng-template #spinner>
-  <spinner class="flex justify-center"></spinner>
-</ng-template>

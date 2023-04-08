@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from "./base.service";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {WallhavenSearch} from "../types/wallhaven-search";
 
@@ -14,7 +14,8 @@ export class WallhavenService extends BaseService {
     super();
   }
 
-  search(): Observable<WallhavenSearch> {
-    return this.client.get<WallhavenSearch>(`${this.baseUrl}/search?apiKey=${this.apiKey}`);
+  search({ page }: { page: number } = { page: 1 }): Observable<WallhavenSearch> {
+    const params = new HttpParams({ fromObject: { page, apiKey: this.apiKey, } });
+    return this.client.get<WallhavenSearch>(`${this.baseUrl}/search`, {params});
   }
 }

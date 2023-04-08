@@ -11,6 +11,7 @@ import {Daum} from "../../types/wallhaven-search";
 export class HomeComponent implements OnInit {
   daums: Daum[] = [];
   loading = false;
+  private page = 1;
 
   constructor(
     private wallhavenService: WallhavenService
@@ -22,16 +23,23 @@ export class HomeComponent implements OnInit {
 
   loadThumbs() {
     this.loading = true;
-    this.wallhavenService.search().pipe(
+    this.wallhavenService.search({
+      page: this.page
+    }).pipe(
       take(1),
       finalize(() => this.loading = false)
     ).subscribe({
       next: value => {
-        this.daums = value.data;
+        this.daums = [...this.daums, ...value.data];
       },
       error: err => {
         console.log(err);
       }
     });
+  }
+
+  handleLoadMore() {
+    this.page += 1;
+    this.loadThumbs();
   }
 }
