@@ -1,1 +1,16 @@
-<p>thumbnail works!</p>
+<main *ngIf="!loading && wallpaper !== undefined; else loader">
+  <div class="flex mb-5 gap-5">
+    <p class="text-2xl">{{wallpaper.data.dimension_x}} x {{wallpaper.data.dimension_y}}</p>
+  </div>
+  <img [height]="wallpaper.data.dimension_y" [ngSrc]="wallpaper.data.path" [width]="wallpaper.data.dimension_x"
+       alt="{{wallpaper.data.category}}">
+  <div class="flex flex-wrap mt-2 gap-2">
+    <app-category *ngFor="let tag of wallpaper.data.tags" [category]="tag.name"></app-category>
+    <app-category [category]="wallpaper.data.category"></app-category>
+  </div>
+</main>
+<ng-template #loader>
+  <div class="grid place-content-center">
+    <spinner></spinner>
+  </div>
+</ng-template>

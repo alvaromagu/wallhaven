@@ -1,7 +1,8 @@
 import {Component, OnDestroy} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Subject, take, takeUntil} from "rxjs";
+import {finalize, Subject, take, takeUntil} from "rxjs";
 import {WallhavenService} from "../../services/wallhaven.service";
+import {Wallpaper} from "../../types/wallpaper";
 
 @Component({
   selector: 'app-thumbnail',
@@ -9,6 +10,8 @@ import {WallhavenService} from "../../services/wallhaven.service";
   styleUrls: ['./wallpaper.component.css']
 })
 export class WallpaperComponent implements OnDestroy {
+  wallpaper?: Wallpaper;
+  loading = true;
   private unSubscribe: Subject<void> = new Subject();
 
   constructor(
@@ -37,9 +40,10 @@ export class WallpaperComponent implements OnDestroy {
       id
     ).pipe(
       take(1),
+      finalize(() => this.loading = false),
     ).subscribe({
       next: value => {
-        console.log(value)
+        this.wallpaper = value;
       }, error: err => {
         console.log(err)
       }
