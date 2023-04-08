@@ -1,10 +1,9 @@
 <h2 class="text-xl">Thumbnails</h2>
 <ng-container *ngIf="!loading; else spinner">
-  <div *ngFor="let daum of daums">
-    {{daum.category}}
-  </div>
+  <app-daum *ngFor="let daum of daums" [daum]="daum">
+  </app-daum>
 </ng-container>
 
 <ng-template #spinner>
-  <app-spinner></app-spinner>
+  <spinner class="flex justify-center"></spinner>
 </ng-template>

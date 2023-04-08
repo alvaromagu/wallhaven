@@ -6,17 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import {NgOptimizedImage} from "@angular/common";
+import { DaumComponent } from './components/daum/daum.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    DaumComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgOptimizedImage
   ],
   providers: [
   ],
