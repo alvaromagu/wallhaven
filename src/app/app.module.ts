@@ -11,7 +11,7 @@ import {DaumComponent} from './components/daum/daum.component';
 import {CategoryComponent} from './components/category/category.component';
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {WallpaperComponent} from './components/thumbnail/wallpaper.component';
+import {WallpaperComponent} from './components/wallpaper/wallpaper.component';
 
 @NgModule({
   declarations: [
