@@ -69,7 +69,8 @@
               "browserTarget": "wallhaven:build:production"
             },
             "development": {
-              "browserTarget": "wallhaven:build:development"
+              "browserTarget": "wallhaven:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
