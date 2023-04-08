@@ -11,6 +11,7 @@ import { DaumComponent } from './components/daum/daum.component';
 import { CategoryComponent } from './components/category/category.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     SpinnerComponent,
     DaumComponent,
     CategoryComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ThumbnailComponent
   ],
   imports: [
     BrowserModule,
