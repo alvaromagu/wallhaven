@@ -1,1 +1,10 @@
-<h2>HOMEEE</h2>
+<h2 class="text-xl">Thumbnails</h2>
+<ng-container *ngIf="!loading; else spinner">
+  <div *ngFor="let daum of daums">
+    {{daum.category}}
+  </div>
+</ng-container>
+
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>
