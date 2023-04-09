@@ -1,4 +1,4 @@
-import {appendFile, readFile, stat} from 'node:fs/promises';
+import {appendFile, readdir, stat} from 'node:fs/promises';
 
 (async function () {
   const path = './src/environments/environment.ts';
@@ -16,6 +16,5 @@ import {appendFile, readFile, stat} from 'node:fs/promises';
     .then(() => console.info('Env file created'))
     .catch(err => console.error(`Could not create env file ${err}`));
 
-  const file = await readFile(path);
-  console.info(file.toString());
+  console.log(await readdir('./'))
 })()
