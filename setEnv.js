@@ -10,6 +10,7 @@ import {stat, writeFile} from 'node:fs/promises';
   apiKey: ${process.env['apiKey']},
   baseUrl: ${process.env['baseUrl']},
 };`
+  console.log(envFile);
   console.info('Creating env file...');
-  await writeFile(path, envFile).then(() => console.info('Env file created')).catch(() => console.error('Could not create env file'));
+  await writeFile(path, envFile).then(() => console.info('Env file created')).catch(err => console.error(`Could not create env file ${err}`));
 })()
