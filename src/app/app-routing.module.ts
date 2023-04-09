@@ -5,8 +5,7 @@ import {WallpaperComponent} from "./components/wallpaper/wallpaper.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'wallpaper/:id', component: WallpaperComponent}
-
+  {path: 'wallpaper/:id', component: WallpaperComponent},
 ];
 
 @NgModule({
