@@ -32,5 +32,4 @@ export class WallhavenService extends BaseService {
 interface SearchParams {
   page: number;
   q?: string;
-  username?: string;
 }

@@ -13,7 +13,7 @@
         </span>
       </div>
     </div>
-    <a [queryParams]="{username: wallpaper.data.uploader.username}" [routerLink]="'/'"
+    <a [queryParams]="{q: '@' + wallpaper.data.uploader.username}" [routerLink]="'/'"
        class="flex gap-3 items-center rounded-full overflow-hidden">
       <img [ngSrc]="wallpaper.data.uploader.avatar['32px']" alt="{{wallpaper.data.uploader.username}}"
            height="32" width="32">

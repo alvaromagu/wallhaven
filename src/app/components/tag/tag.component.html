@@ -1,4 +1,7 @@
-<span class="inline-flex items-center px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
-      id="badge-dismiss-default">
-  {{category}}
-</span>
+<a [queryParams]="{q: '+' + category}" [routerLink]="'/'">
+  <span
+    class="inline-flex items-center px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
+    id="badge-dismiss-default">
+    {{category}}
+  </span>
+</a>
