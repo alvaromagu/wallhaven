@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/*",
-      "destination": "https://wallhaven.cc"
+      "source": "/api/:match*",
+      "destination": "https://wallhaven.cc/api/:match*"
     }
   ],
   "headers": [
