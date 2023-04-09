@@ -16,5 +16,5 @@ import {appendFile, readdir, stat} from 'node:fs/promises';
     .then(() => console.info('Env file created'))
     .catch(err => console.error(`Could not create env file ${err}`));
 
-  console.log(await readdir('./'))
+  console.log(await readdir('./src'))
 })()
