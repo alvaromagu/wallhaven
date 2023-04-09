@@ -1,4 +1,4 @@
-import {environment} from "../../environments/environment.development";
+import {environment} from "../../environments/environment";
 
 export class BaseService {
   protected readonly baseUrl = environment.baseUrl;
