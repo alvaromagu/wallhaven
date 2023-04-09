@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
     page: new FormControl<number | null>(1, Validators.required),
     search: new FormControl<string | null>(''),
     tag: new FormControl<string | null>(''),
+    username: new FormControl<string | null>(''),
   });
   daums: Daum[] = [];
   loading = false;
@@ -32,8 +33,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe({
       next: value => {
-        const {q, tag} = value;
-        this.form.patchValue({search: q ?? '', tag: tag ?? ''});
+        const {q, tag, username} = value;
+        this.form.patchValue({search: q ?? '', tag: tag ?? '', username: username ?? ''});
         this.loadThumbs({reset: true});
       },
       error: err => {
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit {
 
   loadThumbs({reset}: { reset?: boolean } = {}) {
     this.loading = true;
-    const {page, search} = this.form.value;
+    const {page, search, username} = this.form.value;
     if (reset) {
       this.hasMoreContent = true;
       this.daums = [];
@@ -52,6 +53,7 @@ export class HomeComponent implements OnInit {
     this.wallhavenService.search({
       page: page ?? 1,
       q: search ?? undefined,
+      username: username ?? undefined,
     }).pipe(
       take(1),
       finalize(() => this.loading = false)
