@@ -1,13 +1,13 @@
 {
   "rewrites": [
     {
-      "source": "/api/v1/:match*",
-      "destination": "https://api.endpoint.url/:match*"
+      "source": "/api/:match*",
+      "destination": "https://wallhaven.cc/:match*"
     }
   ],
   "headers": [
     {
-      "source": "api/v1/(.*)",
+      "source": "api/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Credentials",
