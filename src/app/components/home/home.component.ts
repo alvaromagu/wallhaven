@@ -32,12 +32,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe({
       next: value => {
-        console.log(value)
+        console.log(value);
         const {q, tag} = value;
         this.form.patchValue({search: q ?? '', tag: tag ?? ''});
         this.loadThumbs({reset: true});
       },
       error: err => {
+        console.log(err);
       },
     });
   }
