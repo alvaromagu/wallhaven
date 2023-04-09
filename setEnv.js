@@ -1,4 +1,4 @@
-import {stat, writeFile} from 'node:fs/promises';
+import {appendFile, stat} from 'node:fs/promises';
 
 (async function () {
   const path = './src/environments/environment.ts';
@@ -7,10 +7,12 @@ import {stat, writeFile} from 'node:fs/promises';
     return;
   }
   const envFile = `export const environment = {
-  apiKey: ${process.env['apiKey']},
-  baseUrl: ${process.env['baseUrl']},
+  apiKey: '${process.env['apiKey']}',
+  baseUrl: '${process.env['baseUrl']}',
 };`
   console.log(envFile);
   console.info('Creating env file...');
-  await writeFile(path, envFile).then(() => console.info('Env file created')).catch(err => console.error(`Could not create env file ${err}`));
+  await appendFile(path, envFile)
+    .then(() => console.info('Env file created'))
+    .catch(err => console.error(`Could not create env file ${err}`));
 })()
