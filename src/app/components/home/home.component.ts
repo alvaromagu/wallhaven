@@ -3,7 +3,8 @@ import {WallhavenService} from "../../services/wallhaven.service";
 import {finalize, take} from "rxjs";
 import {Daum} from "../../types/wallhaven";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SearchForm} from "../search-bar/search-bar.component";
+import {ActivatedRoute, Router} from "@angular/router";
+import {SearchForm} from "../../types/search-form";
 
 @Component({
   selector: 'app-home',
@@ -12,36 +13,51 @@ import {SearchForm} from "../search-bar/search-bar.component";
 })
 export class HomeComponent implements OnInit {
   form: FormGroup<SearchForm> = new FormGroup({
-    search: new FormControl<string | null>('', Validators.required)
+    page: new FormControl<number | null>(1, Validators.required),
+    search: new FormControl<string | null>(''),
+    tag: new FormControl<string | null>(''),
   });
   daums: Daum[] = [];
   loading = false;
   hasMoreContent = true;
-  private page = 1;
 
   constructor(
-    private wallhavenService: WallhavenService
-  ) {}
+    private wallhavenService: WallhavenService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
 
-  ngOnInit(): void {
-    this.loadThumbs();
   }
 
-  loadThumbs({reset}: {reset?: boolean} = {}) {
+  ngOnInit(): void {
+    this.route.queryParams.subscribe({
+      next: value => {
+        console.log(value)
+        const {q, tag} = value;
+        this.form.patchValue({search: q ?? '', tag: tag ?? ''});
+        this.loadThumbs({reset: true});
+      },
+      error: err => {
+      },
+    });
+  }
+
+  loadThumbs({reset}: { reset?: boolean } = {}) {
     this.loading = true;
+    const {page, search} = this.form.value;
+    if (reset) {
+      this.hasMoreContent = true;
+      this.daums = [];
+    }
     this.wallhavenService.search({
-      page: this.page,
-      q: this.form.value.search ?? undefined,
+      page: page ?? 1,
+      q: search ?? undefined,
     }).pipe(
       take(1),
       finalize(() => this.loading = false)
     ).subscribe({
       next: value => {
         this.hasMoreContent = value.data.length === value.meta.per_page;
-        if (reset) {
-          this.daums = value.data;
-          return;
-        }
         this.daums = [...this.daums, ...value.data];
       },
       error: err => {
@@ -51,11 +67,12 @@ export class HomeComponent implements OnInit {
   }
 
   handleLoadMore() {
-    this.page += 1;
+    const page = this.form.value.page!;
+    this.form.patchValue({page: page + 1});
     this.loadThumbs();
   }
 
   handleSubmit() {
-    this.loadThumbs({reset: true});
+    this.router.navigate([''], {queryParams: {q: this.form.value.search}}).then();
   }
 }
