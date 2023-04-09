@@ -21,8 +21,7 @@
   <img [height]="wallpaper.data.dimension_y" [ngSrc]="wallpaper.data.path" [width]="wallpaper.data.dimension_x"
        alt="{{wallpaper.data.category}}">
   <footer class="flex flex-wrap mt-2 gap-2">
-    <app-category *ngFor="let tag of wallpaper.data.tags" [category]="tag.name"></app-category>
-    <app-category [category]="wallpaper.data.category"></app-category>
+    <app-tag *ngFor="let tag of wallpaper.data.tags" [category]="tag.name"></app-tag>
   </footer>
 </main>
 <ng-template #loader>
