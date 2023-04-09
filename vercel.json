@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/:match*",
-      "destination": "https://wallhaven.cc/:match*"
+      "source": "/api/*",
+      "destination": "https://wallhaven.cc"
     }
   ],
   "headers": [
@@ -19,7 +19,7 @@
         },
         {
           "key": "Access-Control-Allow-Methods",
-          "value": "GET"
+          "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
         }
       ]
     }
