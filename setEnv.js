@@ -10,7 +10,6 @@ import {appendFile, readdir, stat} from 'node:fs/promises';
   apiKey: '${process.env['apiKey']}',
   baseUrl: '${process.env['baseUrl']}',
 };`
-  console.log(envFile);
   console.info('Creating env file...');
   await appendFile(path, envFile)
     .then(() => console.info('Env file created'))
