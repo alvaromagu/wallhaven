@@ -6,9 +6,14 @@ import {appendFile, stat} from 'node:fs/promises';
     console.info(`File ${path} already exists`);
     return;
   }
+  const {apiKey, baseUrl} = process.env;
+  if (!apiKey || !baseUrl) {
+    console.error('apiKey or baseUrl variable not found');
+    return;
+  }
   const envFile = `export const environment = {
-  apiKey: '${process.env['apiKey']}',
-  baseUrl: '${process.env['baseUrl']}',
+  apiKey: '${apiKey}',
+  baseUrl: '${baseUrl}',
 };`
   console.info('Creating env file...');
   await appendFile(path, envFile)
