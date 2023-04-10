@@ -1,7 +1,21 @@
 <article class="flex flex-col gap-2">
   <a [routerLink]="'wallpaper/' + daum.id">
-    <div class="w-72 h-40 relative">
+    <div class="w-72 h-40 relative hover:scale-105 transition-transform group">
       <img [alt]="daum.category" [ngSrc]="daum.thumbs.large" fill priority>
+      <div
+        class="flex items-center absolute bottom-0 left-0 gap-3 p-2 right-0 group-hover:opacity-80 bg-gray-800 opacity-0 transition-all">
+        <span class="flex-1">
+          {{daum.dimension_x}} x {{daum.dimension_y}}
+        </span>
+        <span class="flex items-center">
+          <app-eye></app-eye>
+          {{daum.views}}
+        </span>
+        <span class="flex items-center">
+          <app-heart></app-heart>
+          {{daum.favorites}}
+        </span>
+      </div>
     </div>
   </a>
 </article>
