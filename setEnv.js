@@ -1,4 +1,4 @@
-import {appendFile, stat} from 'node:fs/promises';
+const {appendFile, stat} = require('node:fs/promises');
 
 (async function () {
   const path = './src/environments/environment.ts';
